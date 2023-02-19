@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3811377B29A2A2BA00733178 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811377A29A2A2BA00733178 /* ListCell.swift */; };
 		3828646829A00BA100973390 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828646729A00BA100973390 /* ListViewController.swift */; };
 		382B4E1A298EFE670062250E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382B4E19298EFE670062250E /* AppDelegate.swift */; };
 		382B4E1C298EFE670062250E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382B4E1B298EFE670062250E /* SceneDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3811377A29A2A2BA00733178 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		3828646729A00BA100973390 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		382B4E16298EFE670062250E /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		382B4E19298EFE670062250E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3811377929A2A28D00733178 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				3811377A29A2A2BA00733178 /* ListCell.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		3828646429A00A8B00973390 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -53,6 +63,7 @@
 		3828646529A00AA300973390 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				3811377929A2A28D00733178 /* views */,
 				3828646729A00BA100973390 /* ListViewController.swift */,
 			);
 			path = List;
@@ -171,6 +182,7 @@
 				382B4E1E298EFE670062250E /* ViewController.swift in Sources */,
 				382B4E1A298EFE670062250E /* AppDelegate.swift in Sources */,
 				382B4E1C298EFE670062250E /* SceneDelegate.swift in Sources */,
+				3811377B29A2A2BA00733178 /* ListCell.swift in Sources */,
 				3828646829A00BA100973390 /* ListViewController.swift in Sources */,
 				382B4E24298EFE670062250E /* ToDoList.xcdatamodeld in Sources */,
 			);

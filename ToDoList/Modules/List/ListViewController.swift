@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class ListViewController: UITableViewController {
     
     private lazy var newTodoButton: UIButton = {
         var configuration = UIButton.Configuration.filled()
@@ -22,6 +22,7 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
+        configTableView()
     }
     
     
@@ -32,7 +33,12 @@ class ListViewController: UIViewController {
         nav.view.addSubview(newTodoButton)
         newTodoButton.rightAnchor.constraint(equalTo: nav.view.rightAnchor, constant: -20).isActive = true
         newTodoButton.bottomAnchor.constraint(equalTo: nav.view.bottomAnchor, constant: -20).isActive = true
-        
+        nav.navigationBar.prefersLargeTitles = true
+    }
+    
+    private func configTableView(){
+        tableView.register(ListCell.self, forCellReuseIdentifier: ListCell.identifier)
+        tableView.separatorStyle = .none
     }
     
     private func addNewTodo() -> UIAction {
@@ -41,4 +47,25 @@ class ListViewController: UIViewController {
         }
         return action
     }
+}
+
+extension ListViewController {
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       guard let cell = tableView.dequeueReusableCell(withIdentifier: ListCell.identifier, for: indexPath) as?
+                ListCell else {
+           return UITableViewCell()
+       }
+        cell.titleLabel.text = "hola"
+        return cell
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
 }
