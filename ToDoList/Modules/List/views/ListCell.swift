@@ -10,10 +10,12 @@ import UIKit
 final class ListCell: UITableViewCell {
     public static let identifier = String(describing: ListCell.self)
     
-    public var titleLabel: UILabel = {
+    private let colorRandom = RandomColor().color
+    
+    public lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
+        label.textColor = colorRandom
         label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
@@ -32,6 +34,6 @@ final class ListCell: UITableViewCell {
         addSubview(titleLabel)
         titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
-        backgroundColor = .blue
+        backgroundColor = colorRandom.withAlphaComponent(0.2)
     }
 }
