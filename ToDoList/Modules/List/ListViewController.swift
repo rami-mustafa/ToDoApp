@@ -46,7 +46,9 @@ class ListViewController: UITableViewController {
     
     private func addNewTodo() -> UIAction {
         let action = UIAction { _ in
-            print("selam")
+        let controller = TodoViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+            
         }
         return action
     }
