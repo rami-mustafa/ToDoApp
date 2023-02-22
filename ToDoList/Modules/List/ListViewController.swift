@@ -36,6 +36,7 @@ class ListViewController: UITableViewController {
         nav.view.addSubview(newTodoButton)
         newTodoButton.rightAnchor.constraint(equalTo: nav.view.rightAnchor, constant: -20).isActive = true
         newTodoButton.bottomAnchor.constraint(equalTo: nav.view.bottomAnchor, constant: -20).isActive = true
+//        newTodoButton.topAnchor.constraint(equalTo: nav.view.topAnchor, constant: 75).isActive = true
         nav.navigationBar.prefersLargeTitles = true
     }
     
@@ -47,7 +48,9 @@ class ListViewController: UITableViewController {
     private func addNewTodo() -> UIAction {
         let action = UIAction { _ in
         let controller = TodoViewController()
-            self.navigationController?.pushViewController(controller, animated: true)
+            let nav = UINavigationController(rootViewController: controller)
+            self.present(nav, animated: true, completion: nil)
+            //            self.navigationController?.pushViewController(controller, animated: true)
             
         }
         return action
