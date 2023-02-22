@@ -22,13 +22,13 @@ class TodoViewController: UIViewController {
     }
     
     private func configUI(){
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .systemGroupedBackground
         title = "yeni not"
         
         view.addSubview(descriptionTask)
         descriptionTask.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        descriptionTask.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 20).isActive = true
-        descriptionTask.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        descriptionTask.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        descriptionTask.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
         descriptionTask.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
     }
