@@ -49,7 +49,7 @@ class TodoViewController: UIViewController {
         savaEditButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         savaEditButton.topAnchor.constraint(equalTo: descriptionTask.bottomAnchor, constant: 20).isActive = true
         savaEditButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        
+        descriptionTask.becomeFirstResponder()
  
     }
 }
