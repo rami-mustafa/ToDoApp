@@ -16,6 +16,19 @@ class TodoViewController: UIViewController {
         textField.returnKeyType = .done
         return textField
     }()
+    
+    private let savaEditButton: UIButton = {
+        var configuration = UIButton.Configuration.tinted()
+        configuration.cornerStyle = .large
+        var container = AttributeContainer()
+        container.font = UIFont.boldSystemFont(ofSize: 20)
+        configuration.attributedTitle = AttributedString("Save" , attributes:  container)
+        let button = UIButton(configuration: configuration, primaryAction: nil)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
@@ -31,5 +44,12 @@ class TodoViewController: UIViewController {
         descriptionTask.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
         descriptionTask.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
+        view.addSubview(savaEditButton)
+        savaEditButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        savaEditButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        savaEditButton.topAnchor.constraint(equalTo: descriptionTask.bottomAnchor, constant: 20).isActive = true
+        savaEditButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
+ 
     }
 }
