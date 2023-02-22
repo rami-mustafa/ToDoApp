@@ -25,5 +25,11 @@ class TodoViewController: UIViewController {
         view.backgroundColor = .systemBackground
         title = "yeni not"
         
+        view.addSubview(descriptionTask)
+        descriptionTask.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        descriptionTask.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 20).isActive = true
+        descriptionTask.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        descriptionTask.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
     }
 }
