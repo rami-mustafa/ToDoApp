@@ -1,8 +1,9 @@
 
 
 import UIKit
-
-class TodoViewController: UIViewController {
+import Combine
+ 
+final class TodoViewController: UIViewController {
     
     private let descriptionTask: UITextField = {
        let textField = UITextField()
@@ -28,6 +29,7 @@ class TodoViewController: UIViewController {
         return button
     }()
     
+    let newTodo = PassthroughSubject<String, Never>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +52,16 @@ class TodoViewController: UIViewController {
         savaEditButton.topAnchor.constraint(equalTo: descriptionTask.bottomAnchor, constant: 20).isActive = true
         savaEditButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         descriptionTask.becomeFirstResponder()
+        descriptionTask.delegate = self
  
+    }
+}
+
+extension TodoViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let safeText = descriptionTask.text , safeText != "" else {return true}
+        newTodo.send(safeText)
+        dismiss(animated: true, completion: nil)
+        return true
     }
 }

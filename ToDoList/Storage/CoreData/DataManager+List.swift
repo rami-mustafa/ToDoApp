@@ -32,7 +32,8 @@ extension DataManager: DataManagerCRUD{
     }
     
     func deleteTodo(uuid: String) {
-        searchTodo(uuid: uuid) { todo in
+        searchTodo(uuid: uuid) { [weak self] todo in
+            guard let self = self else {return}
             do {
                 self.context.delete(todo)
                 try self.context.save()
@@ -44,7 +45,8 @@ extension DataManager: DataManagerCRUD{
     }
     
     func updateTodo(uuid: String, title: String) {
-        searchTodo(uuid: uuid) { todo in
+        searchTodo(uuid: uuid) { [weak self] todo in
+            guard let self = self else {return}
             do {
                 todo.title = title
                 try self.context.save()

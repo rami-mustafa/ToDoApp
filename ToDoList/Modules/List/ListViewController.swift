@@ -1,8 +1,10 @@
 
 
 import UIKit
+import Combine
 
 class ListViewController: UITableViewController {
+    private var store = Set<AnyCancellable>()
     
     private lazy var newTodoButton: UIButton = {
         var configuration = UIButton.Configuration.filled()
@@ -14,7 +16,11 @@ class ListViewController: UITableViewController {
         return button
     }()
     
-    init(){
+    private let dataManager: DataManagerCRUD
+    private var listTodo = [Todo]().self
+    
+    init(dataManager: DataManager){
+        self.dataManager = dataManager
         super.init(style: .insetGrouped)
     }
     
@@ -26,6 +32,7 @@ class ListViewController: UITableViewController {
         super.viewDidLoad()
         configUI()
         configTableView()
+        listTodo = dataManager.allTodo()
     }
     
     
@@ -48,6 +55,9 @@ class ListViewController: UITableViewController {
     private func addNewTodo() -> UIAction {
         let action = UIAction { _ in
         let controller = TodoViewController()
+            controller.newTodo.sink { todoDescription in
+                print(todoDescription)
+            }.store(in: &self.store)
             let nav = UINavigationController(rootViewController: controller)
             self.present(nav, animated: true, completion: nil)
             //            self.navigationController?.pushViewController(controller, animated: true)
@@ -64,12 +74,13 @@ extension ListViewController {
                 ListCell else {
            return UITableViewCell()
        }
+        let todo = listTodo[indexPath.section]
         cell.titleLabel.text = "hola"
         return cell
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        10
+        listTodo.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
