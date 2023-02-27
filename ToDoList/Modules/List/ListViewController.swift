@@ -55,8 +55,13 @@ class ListViewController: UITableViewController {
     private func addNewTodo() -> UIAction {
         let action = UIAction { _ in
         let controller = TodoViewController()
-            controller.newTodo.sink { todoDescription in
-                print(todoDescription)
+            controller.newTodo.sink { [weak self]todoDescription in
+                guard let self = self else {return}
+                self.dataManager.savaTodo(description: todoDescription)
+                self.listTodo = self.dataManager.allTodo()
+                self.tableView.reloadData()
+                    
+
             }.store(in: &self.store)
             let nav = UINavigationController(rootViewController: controller)
             self.present(nav, animated: true, completion: nil)
@@ -75,7 +80,7 @@ extension ListViewController {
            return UITableViewCell()
        }
         let todo = listTodo[indexPath.section]
-        cell.titleLabel.text = "hola"
+        cell.titleLabel.text = todo.title
         return cell
     }
     
