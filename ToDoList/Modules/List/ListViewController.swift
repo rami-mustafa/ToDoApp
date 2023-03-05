@@ -84,7 +84,21 @@ extension ListViewController {
         return cell
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                let todo = listTodo[indexPath.section]
+                let id = todo.id?.uuidString ?? ""
+                dataManager.deleteTodo(uuid: id)
+                listTodo.remove(at: indexPath.section)
+                
+                let indexSet = IndexSet(arrayLiteral: indexPath.section)
+                tableView.beginUpdates()
+                tableView.deleteSections(indexSet, with: .left)
+                tableView.endUpdates()
+            }
+        }
+    
+     override func numberOfSections(in tableView: UITableView) -> Int {
         listTodo.count
     }
     
