@@ -35,6 +35,16 @@ final class TodoViewController: UIViewController {
     
     let newTodo = PassthroughSubject<String, Never>()
     
+    
+    init(description: String = ""){
+        descriptionTask.text = description
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()

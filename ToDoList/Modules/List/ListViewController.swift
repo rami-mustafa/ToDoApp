@@ -98,6 +98,22 @@ extension ListViewController {
             }
         }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let todo = listTodo[indexPath.section]
+        let uuid = todo.id?.uuidString ?? ""
+        let controller = TodoViewController(description: todo.title ?? "")
+            controller.newTodo.sink { [weak self] todoDescription in
+                guard let self = self else {return}
+                self.dataManager.updateTodo(uuid: uuid, title: todoDescription)
+                self.listTodo = self.dataManager.allTodo()
+                self.tableView.reloadData()
+                    
+
+            }.store(in: &self.store)
+            let nav = UINavigationController(rootViewController: controller)
+            self.present(nav, animated: true, completion: nil)
+    }
+    
      override func numberOfSections(in tableView: UITableView) -> Int {
         listTodo.count
     }
