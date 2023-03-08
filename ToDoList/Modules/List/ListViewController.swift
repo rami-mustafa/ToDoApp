@@ -52,16 +52,19 @@ class ListViewController: UITableViewController {
         tableView.separatorStyle = .none
     }
     
+    
+    private func reloadData() {
+        self.listTodo = self.dataManager.allTodo()
+        self.tableView.reloadData()
+    }
+    
     private func addNewTodo() -> UIAction {
         let action = UIAction { _ in
         let controller = TodoViewController()
             controller.newTodo.sink { [weak self]todoDescription in
                 guard let self = self else {return}
                 self.dataManager.savaTodo(description: todoDescription)
-                self.listTodo = self.dataManager.allTodo()
-                self.tableView.reloadData()
-                    
-
+                self.reloadData()
             }.store(in: &self.store)
             let nav = UINavigationController(rootViewController: controller)
             self.present(nav, animated: true, completion: nil)
@@ -105,10 +108,7 @@ extension ListViewController {
             controller.newTodo.sink { [weak self] todoDescription in
                 guard let self = self else {return}
                 self.dataManager.updateTodo(uuid: uuid, title: todoDescription)
-                self.listTodo = self.dataManager.allTodo()
-                self.tableView.reloadData()
-                    
-
+                self.reloadData()
             }.store(in: &self.store)
             let nav = UINavigationController(rootViewController: controller)
             self.present(nav, animated: true, completion: nil)
