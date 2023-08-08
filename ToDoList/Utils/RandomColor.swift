@@ -1,9 +1,4 @@
-//
-//  RandomColor.swift
-//  ToDoList
-//
-//  Created by Ghaiath Alhereh on 20.02.23.
-//
+
 
 import UIKit
 

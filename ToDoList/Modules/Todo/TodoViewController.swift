@@ -16,7 +16,7 @@ final class TodoViewController: UIViewController {
             width: Int(ViewValues.defaultPadding),
             height: ViewValues.zero))
         textField.leftViewMode = .always
-        textField.placeholder = TextValue.descriptionPlaceHolder
+        textField.placeholder = TextValues.descriptionPlaceHolder
         textField.font = UIFont.boldSystemFont(ofSize: ViewValues.defaultSizeText)
         textField.returnKeyType = .done
         return textField
@@ -27,7 +27,7 @@ final class TodoViewController: UIViewController {
         configuration.cornerStyle = .large
         var container = AttributeContainer()
         container.font = UIFont.boldSystemFont(ofSize: ViewValues.defaultSizeText)
-        configuration.attributedTitle = AttributedString(TextValue.saveButton , attributes:  container)
+        configuration.attributedTitle = AttributedString(TextValues.saveButton , attributes:  container)
         let button = UIButton(configuration: configuration, primaryAction: saveTodoAction())
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -52,7 +52,7 @@ final class TodoViewController: UIViewController {
     
     private func configUI(){
         view.backgroundColor = .systemGroupedBackground
-        title = TextValue.TitleNewTodo
+        title = TextValues.titleNewTodo
         
         view.addSubview(descriptionTask)
         descriptionTask.leftAnchor.constraint(equalTo: view.leftAnchor, constant: ViewValues.defaultPadding).isActive = true

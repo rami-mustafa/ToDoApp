@@ -1,9 +1,4 @@
-//
-//  AppDelegate.swift
-//  ToDoList
-//
-//  Created by Ghaiath Alhereh on 04.02.23.
-//
+
 
 import UIKit
 import CoreData
