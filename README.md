@@ -2,6 +2,13 @@
 
 Discover the elegance of ToDoApp, a sleek and functional iOS application crafted to elevate your task management experience. Immerse yourself in its minimalistic design as you effortlessly maintain organization and efficiency in your daily tasks. Embracing the MVVM architectural pattern, ToDoApp is elegantly constructed, harmonizing form and function seamlessly
 
+## Technologies
+-  I did the recording and uninstalling of events using the `Core Data` structure
+-  Design Pattern: MVVM
+-  %100 Programmatic
+-  UIKit
+-  Auto Layout
+
  ## Installation and Use
 1. Clone this project from GitHub or download it as a ZIP.
 2. Open Xcode and open the project by selecting the .xcodeproj file in the project folder.
