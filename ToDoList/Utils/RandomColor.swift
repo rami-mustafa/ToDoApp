@@ -4,7 +4,7 @@ import UIKit
 
 struct RandomColor {
     
-    private let colors: [UIColor] = [.red , .blue  , .darkGray , .orange , .green , .purple]
+    private let colors: [UIColor] = [.red , .blue  , .darkGray , .orange , .brown , .purple]
     private var currentColor: UIColor = UIColor()
     
     public var color: UIColor {

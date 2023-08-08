@@ -38,7 +38,7 @@ class ListViewController: UITableViewController {
     
     private func configUI() {
         view.backgroundColor = .white
-        title = "Todo List"
+        title = "Today's Tasks"
         guard let nav = navigationController else {return}
         nav.view.addSubview(newTodoButton)
         newTodoButton.rightAnchor.constraint(equalTo: nav.view.rightAnchor, constant: -20).isActive = true
